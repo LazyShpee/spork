@@ -1,3 +1,5 @@
+--- Spork table utils
+
 -- This block required to init spork if it isn't already loaded
 -- And it should be at the beginning of every spork modules
 if not(spork) then
@@ -66,6 +68,7 @@ if spork_global then table.fill = spork.fill end
 -- @param tables
 -- @return a new table of all params merged
 function spork.merge(...)
+-- @warning this provides as is reference and does NOT deepcopy
     local arg = {...}
     local new = {}
     for i=#arg,1,-1 do
