@@ -2,7 +2,8 @@
 -- And it should be at the beginning of every spork modules
 if not(spork) then
     local args = {...}
-    require(string.gsub(args[1], "([/.]?)[^/.]+$", "%1init", 1))
+    local _, filename = args[2]:match("([\\/]?)([^\\/]+)%.[^.]+$")
+    require(string.gsub(args[1], filename.."$", "init", 1))
 end
 
 function spork.type(var)
