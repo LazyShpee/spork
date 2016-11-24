@@ -9,3 +9,9 @@ spork = setmetatable({}, {
     -- vanilla method backups
     __old_type = type
 })
+
+function spork.require(file, ...)
+    local args = {...}
+    local _, filename = args[2]:match("([\\/]?)([^\\/]+)%.[^.]+$")
+    return require(string.gsub(args[1], filename.."$", file, 1))
+end
